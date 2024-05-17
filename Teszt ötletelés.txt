@@ -1,0 +1,5 @@
+1 - Single mode, de mindkét torpedó üres
+2 - Single mode, de az elsődleges torpedótár üres
+3 - Single mode, mindkét torpedótárban csak 1 torpedó van, és 2-t lövünk
+4 - All mode, de mindkét torpedótár üres
+5 - All mode, de mindkét torpedótárban van torpdeó

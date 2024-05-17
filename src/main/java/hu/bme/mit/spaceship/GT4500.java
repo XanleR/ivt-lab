@@ -15,6 +15,11 @@ public class GT4500 implements SpaceShip {
     this.secondaryTorpedoStore = new TorpedoStore(10);
   }
 
+  public GT4500(TorpedoStore ts1, TorpedoStore ts2){
+    this.primaryTorpedoStore = ts1;
+    this.secondaryTorpedoStore = ts2;
+  }
+
   public boolean fireLaser(FiringMode firingMode) {
     // TODO not implemented yet
     return false;
@@ -77,9 +82,15 @@ public class GT4500 implements SpaceShip {
         break;
 
       case ALL:
-        firingSuccess = true;
-        // try to fire both of the torpedo stores
-        //TODO implement feature
+      if (!primaryTorpedoStore.isEmpty() && !secondaryTorpedoStore.isEmpty()) {
+        // Ha mindkét torpedótárban van torpedó, mindkettőt megpróbáljuk lőni
+        firingSuccess = primaryTorpedoStore.fire(1) && secondaryTorpedoStore.fire(1);
+        wasPrimaryFiredLast = false; // Mindkét tárat tüzelésre került
+      } else {
+          // Ha legalább az egyik torpedótár üres, nem történik lövés
+          firingSuccess = false;
+      }
+        
 
         break;
     }
